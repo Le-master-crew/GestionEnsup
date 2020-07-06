@@ -13,7 +13,8 @@ public class EnseignantService implements IEnseignantService{
 
     @Override
     public void noterEtudiant(int idEtudiant, int idEnseignant, double note) {
-        
+        //ajoute une note à un étudiant
+    	
         
     }
     
