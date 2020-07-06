@@ -5,16 +5,24 @@
  */
 package eu.ensup.gestionscolairespringboot.service;
 
+import eu.ensup.gestionscolairespringboot.dao.NoteRepository;
+import eu.ensup.gestionscolairespringboot.domaine.Note;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author lorris
  */
 public class EnseignantService implements IEnseignantService{
 
+    
+    @Autowired
+    private NoteRepository noteDAO;
+    
     @Override
-    public void noterEtudiant(int idEtudiant, int idEnseignant, double note) {
-        //ajoute une note à un étudiant
-    	
+    public Note noterEtudiant(Note n) {
+        return noteDAO.save(n);
+
         
     }
     

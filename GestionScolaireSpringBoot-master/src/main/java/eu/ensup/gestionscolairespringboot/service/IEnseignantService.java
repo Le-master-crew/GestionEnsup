@@ -5,12 +5,14 @@
  */
 package eu.ensup.gestionscolairespringboot.service;
 
+import eu.ensup.gestionscolairespringboot.domaine.Note;
+
 /**
  *
  * @author lorris
  */
 public interface IEnseignantService {
     
-     public void noterEtudiant(int idEtudiant,int idEnseignant,double note);
+     public Note noterEtudiant(Note n);
     
 }
