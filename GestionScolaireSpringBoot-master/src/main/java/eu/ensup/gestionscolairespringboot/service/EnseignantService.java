@@ -13,19 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author lorris
  */
-public class EnseignantService implements IEnseignantService{
+public class EnseignantService implements IEnseignantService {
 
-    
-    @Autowired
-    private NoteRepository noteDAO;
-    
-    @Override
-    public Note noterEtudiant(Note n) {
-        return noteDAO.save(n);
+	@Autowired
+	private NoteRepository noteDAO;
 
-        
-    }
-    
-    
-    
+	@Override
+	public Note noterEtudiant(Note n) {
+		return noteDAO.save(n);
+
+	}
+
 }
