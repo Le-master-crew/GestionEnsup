@@ -13,7 +13,7 @@
 	<artifactId>gestionscolairespringboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>gestionscolairespringboot</name>
+	<name>gestionscolairespringbootv2</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
