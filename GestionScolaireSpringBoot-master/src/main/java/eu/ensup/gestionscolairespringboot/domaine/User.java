@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
-@RequiredArgsConstructor
+//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+//@RequiredArgsConstructor
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -39,6 +39,9 @@ public class User implements UserDetails {
 	private  String phoneNumber;
 
 
+	public User() {
+		super();
+	}
 	public User( String username, String password, String fullname, String street, String city, String state,
 			String zip, String phoneNumber) {
 		super();
