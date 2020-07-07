@@ -39,34 +39,75 @@ class DirectionServiceTest {
 	@Autowired
 	@InjectMocks
 	private DirectionService directionService;
-	
+
 	@BeforeEach
 	public void setupMock() {
 		MockitoAnnotations.initMocks(this); // Cette méthode initialise également les objets simulés lors de
 											// l'initialisation des tests junit.
 	}
 
-	
 	@Test
 	void loginTest() {
 		Direction direction = new Direction();
 		direction.setLogin("login");
 		direction.setPassword("pwd");
-		when(idirectiondao.findByLoginAndPassword("login","pwd")).thenReturn(direction);
-		assertEquals(direction, etudiantService.login("login","pwd"));
+		when(idirectiondao.findByLoginAndPassword("login", "pwd")).thenReturn(direction);
+		assertEquals(direction, etudiantService.login("login", "pwd"));
 	}
-	
+
 	@Test
 	void listerMoyenneEtudiantReturn10() {
 		//
+		Etudiant etuExpected1 = new Etudiant();
+		etuExpected1.setId(1);
+		etuExpected1.setAdresse("");
+		etuExpected1.setDateNaissance("");
+		etuExpected1.setMail("");
+		etuExpected1.setNom("");
+		etuExpected1.setPrenom("");
+		etuExpected1.setTelephone(1);
+		List<Etudiant> etudiants = new ArrayList<Etudiant>();
+		etudiants.add(etuExpected1);
+
+		Note note1 = new Note();
+		note1.setNote(20.00);
+		Note note2 = new Note();
+		note2.setNote(0.0);
+		List<Note> listeNoteEtudiant = new ArrayList<>();
+
+		note1.setIdEtu(etuExpected1.getId());
+		note2.setIdEtu(etuExpected1.getId());
+
+		listeNoteEtudiant.add(note1);
+		listeNoteEtudiant.add(note2);
+
+		List<EtudiantMoyenneVO> listeMoyenneEtudiant = new ArrayList<>();
+		EtudiantMoyenneVO etuMoyenne = new EtudiantMoyenneVO();
+		etuExpected1.setId(1);
+		etuMoyenne.setAdresse("");
+		etuMoyenne.setDateNaissance("");
+		etuMoyenne.setMail("");
+		etuMoyenne.setNom("");
+		etuMoyenne.setPrenom("");
+		etuMoyenne.setTelephone(1);
+		etuMoyenne.setMoyenne(10.00);
+
+		listeMoyenneEtudiant.add(etuMoyenne);
+		
+		when(daoEtu.getOne(1)).thenReturn(etuExpected1);
+		when(daoEtu.findAll()).thenReturn(etudiants);
+		when(daoNote.findAll()).thenReturn(listeNoteEtudiant);
+		List<EtudiantMoyenneVO> listeMoyenneEtudiantactual =directionService.listeMoyenneEtudiants();
+		assertEquals(listeMoyenneEtudiant.get(0).getMoyenne(),listeMoyenneEtudiantactual.get(0).getMoyenne());
+		
 	}
 
 	@Test
 	void CalculerMoyenneEtudiantReturn10() {
-		// la moyenne d'un étudiant dont l'id est 1 et dont les notes sont 0 et 20 
-		//est égale à la moyenne d'un nouveletudiant dont la moyenne est 10
-		Etudiant etu = new Etudiant(1,"1", "1", "1", "1", 1, "1");
-		
+		// la moyenne d'un étudiant dont l'id est 1 et dont les notes sont 0 et 20
+		// est égale à la moyenne d'un nouveletudiant dont la moyenne est 10
+		Etudiant etu = new Etudiant(1, "1", "1", "1", "1", 1, "1");
+
 		Note note = new Note();
 		note.setNote(0.0);
 		Note note2 = new Note();
@@ -74,17 +115,15 @@ class DirectionServiceTest {
 		List<Note> notes = new ArrayList<Note>();
 		notes.add(note);
 		notes.add(note2);
-		
+
 		when(daoEtu.getOne(1)).thenReturn(etu);
-		
+
 		EtudiantMoyenneVO etuVOExtpected = new EtudiantMoyenneVO();
 		etuVOExtpected.setMoyenne(10.00);
 		EtudiantMoyenneVO etuVOActual = directionService.calculerMoyenneEtudiants(notes, 1);
-		
+
 		assertEquals(etuVOExtpected.getMoyenne(), etuVOActual.getMoyenne());
-		
-		
-		
+
 	}
-	
+
 }
