@@ -5,13 +5,16 @@
  */
 package eu.ensup.gestionscolairespringboot.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import eu.ensup.gestionscolairespringboot.dao.EtudiantRepository;
 import eu.ensup.gestionscolairespringboot.dao.NoteRepository;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
 import eu.ensup.gestionscolairespringboot.domaine.Note;
 import eu.ensup.gestionscolairespringboot.domaine.projection.EtudiantMoyenneVO;
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -23,8 +26,12 @@ public class DirectionService implements IDirectionService{
     
     @Autowired
     private NoteRepository noteDAO;
+    
     @Autowired
     private EtudiantService etudiantService;
+    
+    @Autowired
+    private EtudiantRepository daoetu;
     
     
     @Override
@@ -76,7 +83,7 @@ public class DirectionService implements IDirectionService{
         }
         double moyenne = countNotes / index;
         EtudiantMoyenneVO etuVO = new EtudiantMoyenneVO();
-        Etudiant etu = etudiantService.getById(idEtu);
+        Etudiant etu = daoetu.getOne(idEtu);
         etuVO.setAdresse(etu.getAdresse());
         etuVO.setCours(etu.getCours());
         etuVO.setDateNaissance(etu.getDateNaissance());

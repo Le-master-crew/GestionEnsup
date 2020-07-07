@@ -31,12 +31,14 @@ class EnseignantServiceTest {
 	
 	@Test
 	void noterEtudiantTest() {
-		
-		Note note = new Note();	
+		//l'enseignant dont l'id est 1 donne une Note de 20.00 à 
+		//l'étudiant dont l'id est 1 retourne une nouvelle Note de 20.00
+		Note note = new Note();
 		note.setIdEns(1);
 		note.setIdEtu(1);
 		note.setNote(20.00);
-		Note note1 = new Note();	
+		Note note1 = new Note();
+		note.setNote(20.00);
 		when(dao.save(note)).thenReturn(note1);
 		assertEquals(note1,  service.noterEtudiant(note));
 		

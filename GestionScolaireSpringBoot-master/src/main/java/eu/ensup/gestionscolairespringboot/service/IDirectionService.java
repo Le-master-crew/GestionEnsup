@@ -5,11 +5,10 @@
  */
 package eu.ensup.gestionscolairespringboot.service;
 
-import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
+import java.util.List;
+
 import eu.ensup.gestionscolairespringboot.domaine.Note;
 import eu.ensup.gestionscolairespringboot.domaine.projection.EtudiantMoyenneVO;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

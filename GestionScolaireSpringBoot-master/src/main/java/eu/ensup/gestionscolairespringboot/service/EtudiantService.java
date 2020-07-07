@@ -59,7 +59,6 @@ public class EtudiantService implements IEtudiantService {
 	public Direction login(String login, String password) {
 		Direction direction = new Direction();
 		direction = directionDAO.findByLoginAndPassword(login, password);
-		System.out.println("sysout de direction" + direction);
 		return direction;
 	}
 
