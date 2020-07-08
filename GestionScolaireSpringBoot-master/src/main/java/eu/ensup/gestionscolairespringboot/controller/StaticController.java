@@ -293,6 +293,7 @@ public class StaticController {
 	@PostMapping("/readUpdateEtudiant")
 	public String readUpdateEtudiant(@RequestParam("idEtudiant") int id, Model model) {
 		model.addAttribute("etudiant", ietudiantservice.getById(id));
+		
 		return "modificationEtudiant";
 	}
 
@@ -329,7 +330,7 @@ public class StaticController {
 		etudiant.setAdresse(adresse);
 		etudiant.setTelephone(telephone);
 		etudiant.setDateNaissance(dateNaissance);
-		// ietudiantservice.udpateStudent(etudiant);
+		ietudiantservice.saveStudent(etudiant);
 		return "redirect:/listeEtudiants";
 	}
 
@@ -366,8 +367,8 @@ public class StaticController {
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PostMapping("/deleteEtudiant") // it only support port method
 	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, Etudiant etudiant, ModelMap modelMap) {
-		etudiant.setId(idEtudiant);
-		// ietudiantservice.deleteStudent(idEtudiant);
+		
+		ietudiantservice.deleteStudent(ietudiantservice.getById(idEtudiant));
 		return "messageSuppression"; // welcome is view name. It will call welcome.jsp
 	}
 	
