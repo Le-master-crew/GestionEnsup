@@ -44,7 +44,7 @@
   		</div>
 	</nav>
 	<div class="jumbotron">
-	  <h1>Détail d'un étudiant </h1>
+	  <h1>Informations d'un étudiant </h1>
 	</div>
 	
 	<div class="container">		
@@ -57,7 +57,6 @@
 					<th scope="col">Mail</th>
 					<th scope="col">Téléphone</th>
 					<th scope="col">Date de naissance</th>
-					<th scope="col">Noter l'étudiant</th>
 			    </tr>
 			</thead>
 			<tbody>
@@ -69,12 +68,6 @@
 						<td>${etudiant.mail}</td>
 						<td>${etudiant.telephone}</td>
 						<td>${etudiant.dateNaissance}</td>
-						<td>
-						<input type="text" style="margin:0; width:100%; box-shadow: 0;" placeholder="Donner une note" id="button-note1"/>
-						<br>
-						<br>
-						<input type="button" onclick= "" value="Noter l'étudiant" id="button-note2" class="btn-block"/>
-						</td>
 					</tr>
 				</c>
 		    </tbody>
