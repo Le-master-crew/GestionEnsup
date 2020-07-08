@@ -18,7 +18,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
- 		<a class="navbar-brand" href="accueil.jsp">Gestion Etudiants</a>
+ 		<a class="navbar-brand" href="accueil">Gestion Etudiants</a>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active" style="padding-right: 10px">
@@ -49,6 +49,13 @@
 		  <div class="card-body">
 		    <h5 class="card-title" style="text-align: center">Supprimer étudiant</h5>
     		<a href="getFormSupprimerEtudiant" class="stretched-link"></a>
+		  </div>
+		</div>
+		<div class="card" style="width: 220px;">
+		  <img src="./images/accueil/note.jpg" class="card-img-top" alt="Noter étudiant">
+		  <div class="card-body">
+		    <h5 class="card-title" style="text-align: center">Noter étudiant</h5>
+    		<a href="getFormNoterEtudiant" class="stretched-link"></a>
 		  </div>
 		</div>
 	</div>

@@ -16,7 +16,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="accueil.jsp">Gestion Etudiants</a>
+	  <a class="navbar-brand" href="accueil">Gestion Etudiants</a>
 	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
     		<ul class="navbar-nav">
     			<li class="nav-item dropdown">
@@ -30,6 +30,7 @@
 			          <a class="dropdown-item" href="getFormModifierEtudiant">Modifier un étudiant</a>
 			          <a class="dropdown-item" href="getFormAjoutEtudiant">Ajouter un étudiant</a>
 			          <a class="dropdown-item" href="getFormAjoutEtudiantCours">Rajouter un étudiant à un cours</a>
+			          <a class="dropdown-item" href="getFormNoterEtudiant">Noter un étudiant</a>
 			        </div>
 			    </li>
 				<li class="nav-item active" style="padding-right: 10px">

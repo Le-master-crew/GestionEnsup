@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
 import eu.ensup.gestionscolairespringboot.domaine.Direction;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
+import eu.ensup.gestionscolairespringboot.domaine.Note;
+import eu.ensup.gestionscolairespringboot.service.EnseignantService;
 import eu.ensup.gestionscolairespringboot.service.EtudiantService;
+import eu.ensup.gestionscolairespringboot.service.IEnseignantService;
 import eu.ensup.gestionscolairespringboot.service.IEtudiantService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -28,6 +31,9 @@ public class StaticController {
 
 	@Autowired
 	IEtudiantService ietudiantservice;
+	
+	@Autowired
+	IEnseignantService ienseignantservice;
 
 	/**
 	 * @return
@@ -35,6 +41,14 @@ public class StaticController {
 	@Bean
 	public EtudiantService ietudiantservice() {
 		return new EtudiantService();
+	}
+	
+	/**
+	 * @return
+	 */
+	@Bean
+	public EnseignantService ienseignantservice() {
+		return new EnseignantService();
 	}
 
 	/**
@@ -353,5 +367,46 @@ public class StaticController {
 		etudiant.setId(idEtudiant);
 		// ietudiantservice.deleteStudent(idEtudiant);
 		return "messageSuppression"; // welcome is view name. It will call welcome.jsp
+	}
+	
+	/**
+	 * redirige vers la vue rechercheNoterEtudiant.jsp pour noter
+	 * un étudiant
+	 * 
+	 * @return
+	 */
+	@ApiOperation(value = "Recherche un �tudiant pour noter celui-ci")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+	@GetMapping("getFormNoterEtudiant")
+	public String getFormNoterEtudiant() {
+		return "noterEtudiant";
+	}
+	
+	/**
+	 * l'utilisateur va pouvoir noter un étudiant
+	 * 
+	 * @param idEtudiant
+	 * @param note
+	 * @return
+	 */
+
+	@ApiOperation(value = "Noter un �tudiant")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+	@PostMapping("/noterEtudiant") // it only support port method
+	public String noterEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("idEnseignant") int idEnseignant, 
+			@RequestParam("note") int note,
+			Note noteEtudiant,ModelMap modelMap) {
+		double note2 = (double) note;
+		noteEtudiant.setNote(note);
+		noteEtudiant.setIdEtu(idEtudiant);
+		noteEtudiant.setIdEns(idEnseignant);
+		ienseignantservice.noterEtudiant(noteEtudiant);
+		return "redirect:/accueil";
 	}
 }
