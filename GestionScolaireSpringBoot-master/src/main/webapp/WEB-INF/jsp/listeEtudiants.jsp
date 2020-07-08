@@ -30,6 +30,7 @@
 			          <a class="dropdown-item" href="getFormAjoutEtudiant">Ajouter un étudiant</a>
 			          <a class="dropdown-item" href="getFormAjoutEtudiantCours">Rajouter un étudiant à un cours</a>
 			          <a class="dropdown-item" href="getFormNoterEtudiant">Noter un étudiant</a>
+			          <a class="dropdown-item" href="listeMoyenne">Afficher la moyenne des étudiants</a>
 			        </div>
 			    </li>
 				<li class="nav-item active" style="padding-right: 10px">

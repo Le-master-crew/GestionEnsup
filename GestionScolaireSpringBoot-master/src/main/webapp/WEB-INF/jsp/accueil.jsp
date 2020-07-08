@@ -81,6 +81,13 @@
     		<a href="getFormAjoutEtudiantCours" class="stretched-link"></a>
 		  </div>
 		</div>
+		<div class="card" style="width: 220px;">
+		  <img src="./images/accueil/graphique.png" class="card-img-top" alt="Moyenne étudiant">
+		  <div class="card-body">
+		    <h5 class="card-title" style="text-align: center">Afficher la moyenne des étudiants</h5>
+    		<a href="" class="stretched-link"></a>
+		  </div>
+		</div>
 	</div>
 </div>
 </body>
