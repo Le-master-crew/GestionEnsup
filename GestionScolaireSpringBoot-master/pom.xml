@@ -28,7 +28,8 @@
 			</activation>
 			<properties>
 				<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
-
+				<sonar.organization>le-master-crew</sonar.organization>
+				<sonar.login>9f7cb2c1a0618d09b39a5af6b9433cedf68db1ae</sonar.login>
 			</properties>
 		</profile>
 	</profiles>
