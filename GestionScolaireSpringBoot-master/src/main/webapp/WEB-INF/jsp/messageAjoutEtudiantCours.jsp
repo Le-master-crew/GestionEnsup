@@ -45,7 +45,7 @@
 	  <h1>Ajouter un étudiant à un cours</h1>
 	</div>
 	
-	<meta http-equiv="refresh" content="3;URL=accueil.jsp">
+	<meta http-equiv="refresh" content="3;URL=accueil">
 	<div class="container">
         <div class="card card-container">
             <h4>L'étudiant a été ajouté au cours</h4>

@@ -102,7 +102,7 @@ public class StaticController {
 	@RequestMapping("/listeCours")
 	public String listeCours(Model model) {
 		System.out.println("entree dans la methode listeEtudiants");
-		// model.addAttribute("listeCours", ietudiantservice.getAllCours());
+		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "listeCours";
 	}
 
@@ -135,8 +135,10 @@ public class StaticController {
 		return "getFormLogin";
 	}
 	
-	@GetMapping("getFormAjoutEtudiantCours")
-	public String getFormAjoutEtudiantCourst() {
+	@RequestMapping("/getFormAjoutEtudiantCours")
+	public String getFormAjoutEtudiantCours(Model model) {
+		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
+		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
 

@@ -23,7 +23,7 @@
 	        <div class="man-icon"></div>
 	        <h3 class="title">500</h3>
 	        <p class="info">Oh! Page not found</p>
-	        <button type="button" class="home-btn" onclick="location.href = '/';">Accueil</button>
+	        <button type="button" class="home-btn" onclick="location.href = 'accueil';">Accueil</button>
     	</div>
 	</div>
 </body>

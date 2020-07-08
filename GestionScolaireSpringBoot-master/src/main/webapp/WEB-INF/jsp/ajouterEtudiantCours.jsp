@@ -70,9 +70,9 @@
 	        </div><!-- /card-container -->
 	        <div class="card card-container">
 	            <p id="profile-name" class="profile-name-card">Formulaire d'ajout d'étudiant</p>
-	            <form class="form-signin" action="ajouter-etudiant-cours" method="post">
+	            <form class="form-signin" action="lierEtudiantCours" method="post">
 		            <select name="etudiant" class="form-control">
-		              <c:forEach var="listeEtudiant" items="${listeEtudiant}">
+		              <c:forEach var="listeEtudiant" items="${listeEtudiants}">
 		                <option>
 		                	<c:out value="${listeEtudiant.id}" />	           
 		                </option>
@@ -100,15 +100,15 @@
 					    </tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${listeEtudiants}" var="etudiant">
-							<tr>
-								<!-- <th scope="row"><%-- out.println(i); --%></th>  -->
-								<td>${etudiant.id}</td>
-								<td>${etudiant.nom}</td>
-								<td>${etudiant.prenom}</td>
-							</tr>
-						</c:forEach>
-				    </tbody>
+				<c:forEach items="${listeEtudiants}" var="etudiant">
+					<tr>
+						<!-- <th scope="row"><%-- out.println(i); --%></th>  -->
+						<td>${etudiant.id}</td>
+						<td>${etudiant.nom}</td>
+						<td>${etudiant.prenom}</td>
+					</tr>
+				</c:forEach>
+		    </tbody>
 				</table>
 	        </div><!-- /card-container -->
         </div><!-- /row -->
