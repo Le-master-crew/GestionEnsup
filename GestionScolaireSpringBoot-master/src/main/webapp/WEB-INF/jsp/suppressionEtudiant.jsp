@@ -37,7 +37,7 @@
 			          	<a class="dropdown-item" href="getFormNoterEtudiant">Noter un étudiant</a>
 			          </sec:authorize>
 			          <sec:authorize access='hasRole("ROLE_DIRECTEUR")'>
-			          	<a class="dropdown-item" href="listeMoyenne">Afficher la moyenne des étudiants</a>
+			          	<a class="dropdown-item" href="getMoyenneEtudiants">Afficher la moyenne des étudiants</a>
 			          </sec:authorize>
 			        </div>
 			    </li>
