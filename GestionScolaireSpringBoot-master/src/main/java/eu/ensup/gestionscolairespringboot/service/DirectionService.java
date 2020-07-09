@@ -43,16 +43,23 @@ public class DirectionService implements IDirectionService {
 
 		for (int y = 0; y < listeEtudiant.size(); y++) {
 
-			listeNoteEtudiant = noteDAO.findAll();
-
-			for (int i = 0; i < listeNoteEtudiant.size(); i++) {
-				if (listeNoteEtudiant.get(i).getIdEtu() != listeEtudiant.get(y).getId()) {
-					listeNoteEtudiant.remove(i);
+			System.out.println("id "+ listeEtudiant.get(y).getId());
+			listeNoteEtudiant = noteDAO.findAllByIdEtu(listeEtudiant.get(y).getId());
+//			System.out.println("id du boug "+ listeEtudiant.get(y).getId());
+//			System.out.println("nombre de notes avant "+ listeNoteEtudiant.size() );
+//			
+//			for (int i = 0; i < listeNoteEtudiant.size(); i++) {
+//				System.out.println("note avant "+  listeNoteEtudiant.get(i).getNote());
+//				if (listeNoteEtudiant.get(i).getIdEtu() != listeEtudiant.get(y).getId()) {
+//					System.out.println("note apres "+  listeNoteEtudiant.get(i).getNote());
+//					listeNoteEtudiant.remove(i);
+//					System.out.println("id de l'étudiant"+ listeEtudiant.get(y).getId() );
+//					
+//				}
 				
-					
-				}
-				
-			}
+//			}
+			System.out.println("nombre de notes apres "+ listeNoteEtudiant.size() );
+			
 			EtudiantMoyenneVO etudiantMoyenneVO = this.calculerMoyenneEtudiants(listeNoteEtudiant,
 					listeEtudiant.get(y).getId());
 			listeMoyenneEtudiant.add(etudiantMoyenneVO);
@@ -88,6 +95,34 @@ public class DirectionService implements IDirectionService {
 		etuVO.setMoyenne(moyenne);
 
 		return etuVO;
+	}
+	
+	@Override
+	public String construcGraph(List<EtudiantMoyenneVO> liste)
+	{
+		String construct = "";
+		construct = "labels: [";
+			  for (int i = 0; i < liste.size(); i ++)
+			  {
+				  construct = construct + "'"+liste.get(i).getNom()+"',";
+			  }
+			  construct =   construct.substring(0, construct.length()-1);
+			  construct = construct + "],\r\n" + 
+			  		"	    datasets: [{\r\n" + 
+			  		"	        fillColor: \"rgba(220,220,220,0)\",\r\n" + 
+			  		"	        strokeColor: \"rgba(220,180,0,1)\",\r\n" + 
+			  		"	        pointColor: \"rgba(220,180,0,1)\",\r\n" + 
+			  		"	        data: [";
+			  for (int i = 0; i < liste.size(); i ++)
+			  {
+				  construct = construct + "'"+liste.get(i).getMoyenne()+"',";
+				 
+			  }
+		 construct =   construct.substring(0, construct.length()-1);
+		 construct = construct +"  ]}]";
+		return construct;
+		
+		
 	}
 
 }

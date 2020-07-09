@@ -20,4 +20,6 @@ public interface IDirectionService {
      public List<EtudiantMoyenneVO> listeMoyenneEtudiants();
      
      public EtudiantMoyenneVO calculerMoyenneEtudiants(List<Note> liste, int idEtu);
+     
+     public String construcGraph(List<EtudiantMoyenneVO> liste);
 }

@@ -6,6 +6,9 @@
 package eu.ensup.gestionscolairespringboot.dao;
 
 import eu.ensup.gestionscolairespringboot.domaine.Note;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +16,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author lorris
  */
 public interface NoteRepository extends JpaRepository<Note, Integer> {
+	
+	
+	public List<Note> findAllByIdEtu(int idEtu);
+	
+	
     
 }

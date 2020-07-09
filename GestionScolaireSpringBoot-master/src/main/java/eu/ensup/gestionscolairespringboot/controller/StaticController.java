@@ -144,9 +144,8 @@ public class StaticController {
 	
 	@RequestMapping("/getMoyenneEtudiants")
 	public String getMoyenneEtudiants(Model model) {
-		List<EtudiantMoyenneVO> listeMoyenne;
-		listeMoyenne = idirectionservice.listeMoyenneEtudiants();
-		model.addAttribute("listeMoyenneEtudiants", listeMoyenne);
+		String moyenne = idirectionservice.construcGraph(idirectionservice.listeMoyenneEtudiants());
+		model.addAttribute("listeMoyenneEtudiants", moyenne);
 		return "moyenneEtudiant";
 	}
 	
