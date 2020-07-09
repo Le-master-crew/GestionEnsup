@@ -17,7 +17,7 @@ public class MyUserDetails implements UserDetails {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Transient	private User user;
+	private User user;
 	
 	public MyUserDetails(User user) {
 		this.user = user;
