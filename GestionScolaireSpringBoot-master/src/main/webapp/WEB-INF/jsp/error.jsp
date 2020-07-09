@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@
 	        <p class="info">Oh! Page not found</p>
 	        <p class="info">L'identifiant ou le mot de passe saisi est erroné</p>
 	        <div class="container">
-       	        <button type="button" class="home-btn" onclick="location.href = '/';">Retour</button>
+       	        <button type="button" class="home-btn" onclick="location.href = 'accueil';">Accueil</button>
 	        </div>
     	</div>
 	</div>

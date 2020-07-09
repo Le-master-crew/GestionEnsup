@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +24,9 @@
 	        <h3 class="title">500</h3>
 	        <p class="info">Oh! Page not found</p>
 	        <button type="button" class="home-btn" onclick="location.href = 'accueil';">Accueil</button>
+	        <sec:authorize access="isAnonymous()">
+	        	<button type="button" class="home-btn" onclick="location.href ='login';">Se Connecter</button>
+	        </sec:authorize>
     	</div>
 	</div>
 </body>

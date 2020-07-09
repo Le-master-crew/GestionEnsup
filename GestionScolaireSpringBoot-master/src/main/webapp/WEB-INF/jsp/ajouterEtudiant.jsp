@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,18 +25,24 @@
 			          Menu étudiant
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			          <a class="dropdown-item" href="listeEtudiants">Lister étudiants</a>
+			          <sec:authorize access='hasRole("ROLE_DIRECTEUR")'>
+			          	<a class="dropdown-item" href="listeEtudiants">Lister étudiants</a>
+			          </sec:authorize>
 			          <a class="dropdown-item" href="getFormLireEtudiant">Info étudiant</a>
 			          <a class="dropdown-item" href="getFormSupprimerEtudiant">Supprimer un étudiant</a>
 			          <a class="dropdown-item" href="getFormModifierEtudiant">Modifier un étudiant</a>
 			          <a class="dropdown-item" href="getFormAjoutEtudiant">Ajouter un étudiant</a>
 			          <a class="dropdown-item" href="getFormAjoutEtudiantCours">Rajouter un étudiant à un cours</a>
-			          <a class="dropdown-item" href="getFormNoterEtudiant">Noter un étudiant</a>
-			          <a class="dropdown-item" href="listeMoyenne">Afficher la moyenne des étudiants</a>
+			          <sec:authorize access='hasRole("ROLE_ENSEIGNANT")'>
+			          	<a class="dropdown-item" href="getFormNoterEtudiant">Noter un étudiant</a>
+			          </sec:authorize>
+			          <sec:authorize access='hasRole("ROLE_DIRECTEUR")'>
+			          	<a class="dropdown-item" href="listeMoyenne">Afficher la moyenne des étudiants</a>
+			          </sec:authorize>
 			        </div>
 			    </li>
 				<li class="nav-item active" style="padding-right: 10px">
-		       		<a class="nav-link" href="/getFormLogin">Déconnexion <span class="sr-only">(current)</span></a>
+		       		<a class="nav-link" href="logout">Déconnexion <span class="sr-only">(current)</span></a>
 		   		</li>
     		</ul>
   		</div>
@@ -47,7 +54,7 @@
         <div class="card card-container">
             <p id="profile-name" class="profile-name-card">Formulaire d'ajout d'étudiant</p>
             
-            <form class="form-signin" action="/saveEtudiant" method="post">
+            <form class="form-signin" action="saveEtudiant" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input name="nom" type="text" id="inputEmail" class="form-control" placeholder="Nom" required autofocus>
                 <input name="prenom" type="text" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus>

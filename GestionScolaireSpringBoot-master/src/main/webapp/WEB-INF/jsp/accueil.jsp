@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="eu.ensup.gestionscolairespringboot.domaine.Etudiant"%>
 
 <!DOCTYPE html>
@@ -16,13 +17,12 @@
 	<title>Profil</title>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
  		<a class="navbar-brand" href="accueil">Gestion Etudiants</a>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active" style="padding-right: 10px">
-					<a class="nav-link" href="/getFormLogin">Déconnexion <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="logout">Déconnexion <span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
 		</div>
@@ -30,13 +30,15 @@
 
 <div class="container">
 	<div class="row" style="margin-top: -50px;margin-bottom: -70px;">
-		<div class="card" style="width: 220px;">
-		  <img src="./images/accueil/people.jpg" class="card-img-top" alt="Liste étudiants">
-		  <div class="card-body">
-		    <h5 class="card-title" style="text-align: center">Lister les étudiants</h5>
-    		<a href="listeEtudiants" class="stretched-link"></a>
-		  </div>
-		</div>
+		<sec:authorize access='hasRole("ROLE_DIRECTEUR")'>
+			<div class="card" style="width: 220px;">
+			  <img src="./images/accueil/people.jpg" class="card-img-top" alt="Liste étudiants">
+			  <div class="card-body">
+			    <h5 class="card-title" style="text-align: center">Lister les étudiants</h5>
+	    		<a href="listeEtudiants" class="stretched-link"></a>
+			  </div>
+			</div>
+		</sec:authorize>
 		<div class="card" style="width: 220px;">
 		  <img src="./images/accueil/book.jpg" class="card-img-top" alt="Information étudiant">
 		  <div class="card-body">
@@ -51,6 +53,7 @@
     		<a href="getFormSupprimerEtudiant" class="stretched-link"></a>
 		  </div>
 		</div>
+		<sec:authorize access='hasRole("ROLE_ENSEIGNANT")'>
 		<div class="card" style="width: 220px;">
 		  <img src="./images/accueil/note.jpg" class="card-img-top" alt="Noter étudiant">
 		  <div class="card-body">
@@ -58,6 +61,7 @@
     		<a href="getFormNoterEtudiant" class="stretched-link"></a>
 		  </div>
 		</div>
+		</sec:authorize>
 	</div>
 	<div class="row" style="margin-top: -50px;margin-bottom: -70px;">
 		<div class="card" style="width: 220px;">
@@ -81,6 +85,7 @@
     		<a href="getFormAjoutEtudiantCours" class="stretched-link"></a>
 		  </div>
 		</div>
+		<sec:authorize access='hasRole("ROLE_DIRECTEUR")'>
 		<div class="card" style="width: 220px;">
 		  <img src="./images/accueil/graphique.png" class="card-img-top" alt="Moyenne étudiant">
 		  <div class="card-body">
@@ -88,6 +93,7 @@
     		<a href="" class="stretched-link"></a>
 		  </div>
 		</div>
+		</sec:authorize>
 	</div>
 </div>
 </body>

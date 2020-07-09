@@ -80,6 +80,13 @@ public class StaticController {
 		this.ietudiantservice = iformationService;
 	}
 
+	
+	@GetMapping("/accessDenied")
+    public String accessDenied(Model model) 
+    {
+        return "accessDenied";
+    }
+	
 	/**
 	 * Méthode listant les étudiants
 	 * 
@@ -111,28 +118,10 @@ public class StaticController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping( "/accueil")
+	@GetMapping({ "/", "/accueil" })
 	public String accueil() {
 
 		return "accueil";
-	}
-
-	/**
-	 * paramétrage de la page de lancement de l'application redirige vers le
-	 * formulaire de connexion
-	 * 
-	 * @return
-	 */
-
-	@ApiOperation(value = "Vue de la page login, vue par défaut lors du lancement de l'applicaiton")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
-			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@GetMapping({ "/","getFormLogin" })
-	public String home() {
-
-		return "getFormLogin";
 	}
 	
 	@RequestMapping("/getFormAjoutEtudiantCours")
@@ -204,30 +193,6 @@ public class StaticController {
 		ietudiantservice.saveStudent(etudiant);
 
 		return "redirect:/listeEtudiants";
-	}
-
-
-	/**
-	 * utilisation de la méthode permettant à un dirigeant de se connecter Dans le
-	 * cas où cela réussit, redirection vers accueil.jsp sinon error2.jsp
-	 * 
-	 * @param password
-	 * @param login
-	 * @param direction
-	 * @param modelMap
-	 * @return
-	 */
-	@PostMapping("/login") // it only support port method
-	public String login(@RequestParam("password") String password, @RequestParam("login") String login,
-			Direction direction, ModelMap modelMap) {
-		direction.setPassword(password);
-		direction.setLogin(login);
-		if (ietudiantservice.login(login, password) != null) {
-			return "redirect:/accueil";
-		} else {
-			return "error2";
-		}
-
 	}
 
 	/**
