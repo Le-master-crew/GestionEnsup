@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
@@ -201,9 +200,9 @@ public class StaticController {
 	@PostMapping("/saveEtudiant")
 	public String saveEtudiant(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom,
 			@RequestParam("telephone") int telephone, @RequestParam("adresse") String adresse,
-			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant,
+			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance,
 			ModelMap modelMap) {
-		System.out.println("post ajout etudiant ctrl");
+		Etudiant etudiant = new Etudiant();
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);
 		etudiant.setAdresse(adresse);
@@ -307,7 +306,8 @@ public class StaticController {
 	public String udpateEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("nom") String nom,
 			@RequestParam("prenom") String prenom, @RequestParam("telephone") int telephone,
 			@RequestParam("adresse") String adresse, @RequestParam("mail") String mail,
-			@RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant, ModelMap modelMap) {
+			@RequestParam("dateNaissance") String dateNaissance,  ModelMap modelMap) {
+		Etudiant etudiant = new Etudiant();
 		etudiant.setId(idEtudiant);
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);
