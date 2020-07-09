@@ -30,26 +30,18 @@ public class DirectionService implements IDirectionService {
 
 	@Override
 	public List<EtudiantMoyenneVO> listeMoyenneEtudiants() {
-
+		
 		List<Etudiant> listeEtudiant = daoetu.findAll();
-
 		List<Note> listeNoteEtudiant;
-
 		List<EtudiantMoyenneVO> listeMoyenneEtudiant = new ArrayList<>();
-
+		
 		for (int y = 0; y < listeEtudiant.size(); y++) {
-
-
 			System.out.println("id "+ listeEtudiant.get(y).getId());
 			listeNoteEtudiant = noteDAO.findAllByIdEtu(listeEtudiant.get(y).getId());
-
-			
-
 			EtudiantMoyenneVO etudiantMoyenneVO = this.calculerMoyenneEtudiants(listeNoteEtudiant,
 					listeEtudiant.get(y).getId());
 			listeMoyenneEtudiant.add(etudiantMoyenneVO);
 		}
-
 		return listeMoyenneEtudiant;
 	}
 
