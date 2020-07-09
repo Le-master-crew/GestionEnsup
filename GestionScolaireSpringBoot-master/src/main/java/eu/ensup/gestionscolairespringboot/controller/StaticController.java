@@ -135,7 +135,7 @@ public class StaticController {
 		return "accueil";
 	}
 	
-	@RequestMapping("/getFormAjoutEtudiantCours")
+	@GetMapping("/getFormAjoutEtudiantCours")
 	public String getFormAjoutEtudiantCours(Model model) {
 		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());
