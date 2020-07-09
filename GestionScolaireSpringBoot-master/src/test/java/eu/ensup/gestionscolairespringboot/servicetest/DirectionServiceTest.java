@@ -13,10 +13,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import eu.ensup.gestionscolairespringboot.dao.DirectionRepository;
 import eu.ensup.gestionscolairespringboot.dao.EtudiantRepository;
 import eu.ensup.gestionscolairespringboot.dao.NoteRepository;
-import eu.ensup.gestionscolairespringboot.domaine.Direction;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
 import eu.ensup.gestionscolairespringboot.domaine.Note;
 import eu.ensup.gestionscolairespringboot.domaine.projection.EtudiantMoyenneVO;
@@ -25,8 +23,6 @@ import eu.ensup.gestionscolairespringboot.service.EtudiantService;
 
 class DirectionServiceTest {
 
-	@Mock
-	private DirectionRepository idirectiondao;
 	@Mock
 	private NoteRepository daoNote;
 	@Mock
@@ -44,15 +40,6 @@ class DirectionServiceTest {
 	public void setupMock() {
 		MockitoAnnotations.initMocks(this); // Cette méthode initialise également les objets simulés lors de
 											// l'initialisation des tests junit.
-	}
-
-	@Test
-	void loginTest() {
-		Direction direction = new Direction();
-		direction.setLogin("login");
-		direction.setPassword("pwd");
-		when(idirectiondao.findByLoginAndPassword("login", "pwd")).thenReturn(direction);
-		assertEquals(direction, etudiantService.login("login", "pwd"));
 	}
 
 	@Test
