@@ -57,9 +57,7 @@ public class EtudiantService implements IEtudiantService {
 	}
 
 	public List<Cours> getAllCours() {
-
 		return coursDAO.findAll();
-
 	}
 
 }
