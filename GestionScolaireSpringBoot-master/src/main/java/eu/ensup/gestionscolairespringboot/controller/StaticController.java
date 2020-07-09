@@ -41,6 +41,8 @@ public class StaticController {
 	@Autowired
 	IEnseignantService ienseignantservice;
 
+	private final static String LISTE_ETU = "listeEtudiants";
+	private final static String LISTE_COURS = "listeCours";
 	/**
 	 * @return
 	 */
@@ -103,11 +105,10 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/listeEtudiants")
+	@GetMapping("/"+LISTE_ETU)
 	public String listeEtudiants(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
-		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
-		return "listeEtudiants";
+		model.addAttribute(LISTE_ETU, ietudiantservice.getAll());
+		return LISTE_ETU;
 	}
 
 	/**
@@ -116,11 +117,10 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/listeCours")
+	@GetMapping("/"+LISTE_COURS)
 	public String listeCours(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
-		model.addAttribute("listeCours", ietudiantservice.getAllCours());
-		return "listeCours";
+		model.addAttribute(LISTE_COURS, ietudiantservice.getAllCours());
+		return LISTE_COURS;
 	}
 
 	/**
@@ -136,8 +136,8 @@ public class StaticController {
 	
 	@GetMapping("/getFormAjoutEtudiantCours")
 	public String getFormAjoutEtudiantCours(Model model) {
-		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
-		model.addAttribute("listeCours", ietudiantservice.getAllCours());
+		model.addAttribute(LISTE_ETU, ietudiantservice.getAll());
+		model.addAttribute(LISTE_COURS, ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
 	
@@ -159,7 +159,6 @@ public class StaticController {
 	 */
 	@PostMapping("/lierEtudiantCours")
 	public String lierEtudiantCours(Etudiant etudiant, Cours cours) {
-		System.out.println("entree dans la methode ajouterEtudiant");
 		ietudiantservice.lierCoursEtudiant(cours, etudiant);
 		return "messageAjoutEtudiantCours";
 	}
@@ -171,7 +170,6 @@ public class StaticController {
 	 */
 	@GetMapping("getFormAjoutEtudiant")
 	public String getFormAjoutEtudiant() {
-		System.out.println("get ajout etudiant ctrl");
 		return "ajouterEtudiant";
 	}
 
@@ -210,7 +208,7 @@ public class StaticController {
 		etudiant.setDateNaissance(dateNaissance);
 		ietudiantservice.saveStudent(etudiant);
 
-		return "redirect:/listeEtudiants";
+		return "redirect:/"+LISTE_ETU;
 	}
 
 	/**
@@ -315,7 +313,7 @@ public class StaticController {
 		etudiant.setTelephone(telephone);
 		etudiant.setDateNaissance(dateNaissance);
 		ietudiantservice.saveStudent(etudiant);
-		return "redirect:/listeEtudiants";
+		return "redirect:/"+LISTE_ETU;
 	}
 
 	/**
@@ -388,9 +386,8 @@ public class StaticController {
 	public String noterEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("idEnseignant") int idEnseignant, 
 			@RequestParam("note") int note,
 			ModelMap modelMap) {
-		double note2 = (double) note;
 		Note noteEtudiant = new Note();
-		noteEtudiant.setNote(note);
+		noteEtudiant.setNote((double) note);
 		noteEtudiant.setIdEtu(idEtudiant);
 		noteEtudiant.setIdEns(idEnseignant);
 		ienseignantservice.noterEtudiant(noteEtudiant);
