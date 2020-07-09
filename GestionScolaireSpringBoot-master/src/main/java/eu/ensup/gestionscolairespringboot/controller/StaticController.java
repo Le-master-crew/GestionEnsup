@@ -104,7 +104,7 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeEtudiants")
+	@GetMapping("/listeEtudiants")
 	public String listeEtudiants(Model model) {
 		System.out.println("entree dans la methode listeEtudiants");
 		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
@@ -117,7 +117,7 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeCours")
+	@GetMapping("/listeCours")
 	public String listeCours(Model model) {
 		System.out.println("entree dans la methode listeEtudiants");
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());
@@ -142,7 +142,7 @@ public class StaticController {
 		return "ajouterEtudiantCours";
 	}
 	
-	@RequestMapping("/getMoyenneEtudiants")
+	@GetMapping("/getMoyenneEtudiants")
 	public String getMoyenneEtudiants(Model model) {
 		List<EtudiantMoyenneVO> listeMoyenne;
 		listeMoyenne = idirectionservice.listeMoyenneEtudiants();
