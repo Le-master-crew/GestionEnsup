@@ -10,6 +10,16 @@
 <title>Moyenne étudiants</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="accueil">Gestion Etudiants</a>
+	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+    		<ul class="navbar-nav">
+				<li class="nav-item active" style="padding-right: 10px">
+		       		<a class="nav-link" href="logout">Déconnexion <span class="sr-only">(current)</span></a>
+		   		</li>
+    		</ul>
+  		</div>
+	</nav>
 <div class="container">
   <h2>Graphique des moyennes des étudiants<h2>
   <div>
