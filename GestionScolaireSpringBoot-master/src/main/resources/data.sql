@@ -21,17 +21,17 @@ INSERT INTO `cours` (`id_cours`, `libelle`, `nb_heure`) VALUES (3, 'Cours de ANG
 INSERT INTO `personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES (1, "241 rue DUGUESCLIN,
 69003 Lyon","contact@objis.com", "objis", "objis", 012030405);
 INSERT INTO `etudiant` (`date_naissance`, `id`) VALUES ("01/01/01", 1);
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('1', '1', '1', '13');
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('2', '1', '1', '14');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('1', '1', '1', '13');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('2', '1', '1', '14');
 INSERT INTO `gestionscolaire`.`personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES ('2', NULL, NULL, NULL, NULL, '989744397');
 INSERT INTO `gestionscolaire`.`etudiant` (`date_naissance`, `id`) VALUES ('01/12/1997', '2');
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('3', '1', '2', '16');
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('4', '1', '2', '14');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('3', '1', '2', '16');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('4', '1', '2', '14');
 
 INSERT INTO `gestionscolaire`.`personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES ('3', NULL, NULL, NULL, NULL, '4567876');
 INSERT INTO `gestionscolaire`.`etudiant` (`date_naissance`, `id`) VALUES ('01/12/1997', '3');
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('6', '1', '3', '7');
-INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `note`) VALUES ('5', '1', '3', '8');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('6', '1', '3', '7');
+INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('5', '1', '3', '8');
 
 
 

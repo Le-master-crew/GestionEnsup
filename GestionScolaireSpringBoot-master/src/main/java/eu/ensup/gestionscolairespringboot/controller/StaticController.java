@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
@@ -42,6 +41,8 @@ public class StaticController {
 	@Autowired
 	IEnseignantService ienseignantservice;
 
+	private static final String LISTE_ETU = "listeEtudiants";
+	private static final String LISTE_COURS = "listeCours";
 	/**
 	 * @return
 	 */
@@ -104,11 +105,10 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeEtudiants")
+	@GetMapping("/"+LISTE_ETU)
 	public String listeEtudiants(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
-		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
-		return "listeEtudiants";
+		model.addAttribute(LISTE_ETU, ietudiantservice.getAll());
+		return LISTE_ETU;
 	}
 
 	/**
@@ -117,11 +117,10 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeCours")
+	@GetMapping("/"+LISTE_COURS)
 	public String listeCours(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
-		model.addAttribute("listeCours", ietudiantservice.getAllCours());
-		return "listeCours";
+		model.addAttribute(LISTE_COURS, ietudiantservice.getAllCours());
+		return LISTE_COURS;
 	}
 
 	/**
@@ -135,14 +134,14 @@ public class StaticController {
 		return "accueil";
 	}
 	
-	@RequestMapping("/getFormAjoutEtudiantCours")
+	@GetMapping("/getFormAjoutEtudiantCours")
 	public String getFormAjoutEtudiantCours(Model model) {
-		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
-		model.addAttribute("listeCours", ietudiantservice.getAllCours());
+		model.addAttribute(LISTE_ETU, ietudiantservice.getAll());
+		model.addAttribute(LISTE_COURS, ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
 	
-	@RequestMapping("/getMoyenneEtudiants")
+	@GetMapping("/getMoyenneEtudiants")
 	public String getMoyenneEtudiants(Model model) {
 		String moyenne = idirectionservice.construcGraph(idirectionservice.listeMoyenneEtudiants());
 		model.addAttribute("listeMoyenneEtudiants", moyenne);
@@ -159,7 +158,6 @@ public class StaticController {
 	 */
 	@PostMapping("/lierEtudiantCours")
 	public String lierEtudiantCours(Etudiant etudiant, Cours cours) {
-		System.out.println("entree dans la methode ajouterEtudiant");
 		ietudiantservice.lierCoursEtudiant(cours, etudiant);
 		return "messageAjoutEtudiantCours";
 	}
@@ -171,7 +169,6 @@ public class StaticController {
 	 */
 	@GetMapping("getFormAjoutEtudiant")
 	public String getFormAjoutEtudiant() {
-		System.out.println("get ajout etudiant ctrl");
 		return "ajouterEtudiant";
 	}
 
@@ -200,9 +197,9 @@ public class StaticController {
 	@PostMapping("/saveEtudiant")
 	public String saveEtudiant(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom,
 			@RequestParam("telephone") int telephone, @RequestParam("adresse") String adresse,
-			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant,
+			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance,
 			ModelMap modelMap) {
-		System.out.println("post ajout etudiant ctrl");
+		Etudiant etudiant = new Etudiant();
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);
 		etudiant.setAdresse(adresse);
@@ -210,7 +207,7 @@ public class StaticController {
 		etudiant.setDateNaissance(dateNaissance);
 		ietudiantservice.saveStudent(etudiant);
 
-		return "redirect:/listeEtudiants";
+		return "redirect:/"+LISTE_ETU;
 	}
 
 	/**
@@ -306,7 +303,8 @@ public class StaticController {
 	public String udpateEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("nom") String nom,
 			@RequestParam("prenom") String prenom, @RequestParam("telephone") int telephone,
 			@RequestParam("adresse") String adresse, @RequestParam("mail") String mail,
-			@RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant, ModelMap modelMap) {
+			@RequestParam("dateNaissance") String dateNaissance,  ModelMap modelMap) {
+		Etudiant etudiant = new Etudiant();
 		etudiant.setId(idEtudiant);
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);
@@ -314,7 +312,7 @@ public class StaticController {
 		etudiant.setTelephone(telephone);
 		etudiant.setDateNaissance(dateNaissance);
 		ietudiantservice.saveStudent(etudiant);
-		return "redirect:/listeEtudiants";
+		return "redirect:/"+LISTE_ETU;
 	}
 
 	/**
@@ -339,7 +337,6 @@ public class StaticController {
 	 * question. Si l'étudiant existe, la vue messageSuppression.jsp est affichée.
 	 * 
 	 * @param idEtudiant
-	 * @param etudiant
 	 * @param modelMap
 	 * @return
 	 */
@@ -349,7 +346,7 @@ public class StaticController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PostMapping("/deleteEtudiant") // it only support port method
-	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, Etudiant etudiant, ModelMap modelMap) {
+	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, ModelMap modelMap) {
 		
 		ietudiantservice.deleteStudent(ietudiantservice.getById(idEtudiant));
 		return "messageSuppression"; // welcome is view name. It will call welcome.jsp
@@ -387,9 +384,9 @@ public class StaticController {
 	@PostMapping("/noterEtudiant") // it only support port method
 	public String noterEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("idEnseignant") int idEnseignant, 
 			@RequestParam("note") int note,
-			Note noteEtudiant,ModelMap modelMap) {
-		double note2 = (double) note;
-		noteEtudiant.setNote(note);
+			ModelMap modelMap) {
+		Note noteEtudiant = new Note();
+		noteEtudiant.setNote((double) note);
 		noteEtudiant.setIdEtu(idEtudiant);
 		noteEtudiant.setIdEns(idEnseignant);
 		ienseignantservice.noterEtudiant(noteEtudiant);

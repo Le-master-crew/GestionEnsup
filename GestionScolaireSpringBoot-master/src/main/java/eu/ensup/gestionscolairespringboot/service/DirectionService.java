@@ -26,40 +26,25 @@ public class DirectionService implements IDirectionService {
 	private NoteRepository noteDAO;
 
 	@Autowired
-	private EtudiantService etudiantService;
-
-	@Autowired
 	private EtudiantRepository daoetu;
 
 	@Override
 	public List<EtudiantMoyenneVO> listeMoyenneEtudiants() {
 
-		List<Etudiant> listeEtudiant = new ArrayList<>();
-		listeEtudiant = daoetu.findAll();
+		List<Etudiant> listeEtudiant = daoetu.findAll();
 
-		List<Note> listeNoteEtudiant = new ArrayList<>();
+		List<Note> listeNoteEtudiant;
 
 		List<EtudiantMoyenneVO> listeMoyenneEtudiant = new ArrayList<>();
 
 		for (int y = 0; y < listeEtudiant.size(); y++) {
 
+
 			System.out.println("id "+ listeEtudiant.get(y).getId());
 			listeNoteEtudiant = noteDAO.findAllByIdEtu(listeEtudiant.get(y).getId());
-//			System.out.println("id du boug "+ listeEtudiant.get(y).getId());
-//			System.out.println("nombre de notes avant "+ listeNoteEtudiant.size() );
-//			
-//			for (int i = 0; i < listeNoteEtudiant.size(); i++) {
-//				System.out.println("note avant "+  listeNoteEtudiant.get(i).getNote());
-//				if (listeNoteEtudiant.get(i).getIdEtu() != listeEtudiant.get(y).getId()) {
-//					System.out.println("note apres "+  listeNoteEtudiant.get(i).getNote());
-//					listeNoteEtudiant.remove(i);
-//					System.out.println("id de l'étudiant"+ listeEtudiant.get(y).getId() );
-//					
-//				}
-				
-//			}
-			System.out.println("nombre de notes apres "+ listeNoteEtudiant.size() );
+
 			
+
 			EtudiantMoyenneVO etudiantMoyenneVO = this.calculerMoyenneEtudiants(listeNoteEtudiant,
 					listeEtudiant.get(y).getId());
 			listeMoyenneEtudiant.add(etudiantMoyenneVO);
@@ -75,13 +60,17 @@ public class DirectionService implements IDirectionService {
 	@Override
 	public EtudiantMoyenneVO calculerMoyenneEtudiants(List<Note> liste, int idEtu) {
 
-		double countNotes = 0;
+		double countNotes = 0.0;
 		int index = 0;
+		double moyenne = 0.0;
 		for (int i = 0; i < liste.size(); i++) {
 			index++;
 			countNotes = countNotes + liste.get(i).getNote();
 		}
-		double moyenne = countNotes / index;
+		if(index!=0) {
+			moyenne = countNotes / index;
+		}
+		
 		EtudiantMoyenneVO etuVO = new EtudiantMoyenneVO();
 		Etudiant etu = daoetu.getOne(idEtu);
 		etuVO.setAdresse(etu.getAdresse());
