@@ -13,8 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails {
 
-	@Transient
-	private User user;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Transient	private User user;
 	
 	public MyUserDetails(User user) {
 		this.user = user;
