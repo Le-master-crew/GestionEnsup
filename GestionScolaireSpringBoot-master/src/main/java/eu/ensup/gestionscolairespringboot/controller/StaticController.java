@@ -1,5 +1,7 @@
 package eu.ensup.gestionscolairespringboot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
 import eu.ensup.gestionscolairespringboot.domaine.Note;
+import eu.ensup.gestionscolairespringboot.domaine.projection.EtudiantMoyenneVO;
+import eu.ensup.gestionscolairespringboot.service.DirectionService;
 import eu.ensup.gestionscolairespringboot.service.EnseignantService;
 import eu.ensup.gestionscolairespringboot.service.EtudiantService;
+import eu.ensup.gestionscolairespringboot.service.IDirectionService;
 import eu.ensup.gestionscolairespringboot.service.IEnseignantService;
 import eu.ensup.gestionscolairespringboot.service.IEtudiantService;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +35,9 @@ public class StaticController {
 
 	@Autowired
 	IEtudiantService ietudiantservice;
+	
+	@Autowired
+	IDirectionService idirectionservice;
 	
 	@Autowired
 	IEnseignantService ienseignantservice;
@@ -48,6 +56,10 @@ public class StaticController {
 	@Bean
 	public EnseignantService ienseignantservice() {
 		return new EnseignantService();
+	}
+	@Bean
+	public DirectionService idirectionservice() {
+		return new DirectionService();
 	}
 
 	/**
@@ -129,7 +141,15 @@ public class StaticController {
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
-
+	
+	@RequestMapping("/getMoyenneEtudiants")
+	public String getMoyenneEtudiants(Model model) {
+		List<EtudiantMoyenneVO> listeMoyenne;
+		listeMoyenne = idirectionservice.listeMoyenneEtudiants();
+		model.addAttribute("listeMoyenneEtudiants", listeMoyenne);
+		return "moyenneEtudiant";
+	}
+	
 	/**
 	 * permet de lier un étudiant à un cours redirige vers la vue
 	 * messageAjoutEtudiantCours.jsp

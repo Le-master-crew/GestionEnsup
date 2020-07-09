@@ -48,6 +48,8 @@ public class DirectionService implements IDirectionService {
 			for (int i = 0; i < listeNoteEtudiant.size(); i++) {
 				if (listeNoteEtudiant.get(i).getIdEtu() != listeEtudiant.get(y).getId()) {
 					listeNoteEtudiant.remove(i);
+				
+					
 				}
 				
 			}
