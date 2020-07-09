@@ -41,8 +41,8 @@ public class StaticController {
 	@Autowired
 	IEnseignantService ienseignantservice;
 
-	private final static String LISTE_ETU = "listeEtudiants";
-	private final static String LISTE_COURS = "listeCours";
+	private static final String LISTE_ETU = "listeEtudiants";
+	private static final String LISTE_COURS = "listeCours";
 	/**
 	 * @return
 	 */

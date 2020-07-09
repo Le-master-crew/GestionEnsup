@@ -5,12 +5,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Transient;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails {
 
+	@Transient
 	private User user;
 	
 	public MyUserDetails(User user) {

@@ -20,7 +20,7 @@ import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
 import eu.ensup.gestionscolairespringboot.service.EtudiantService;
 
 class EtudiantServiceTest {
-
+	
 	@Mock
 	private EtudiantRepository ietudiantdao;
 
@@ -49,22 +49,22 @@ class EtudiantServiceTest {
 	}
 
 	@Test
-	void LireEtudiantTest() {
-		Etudiant etu = new Etudiant(7, "nom", "prenom", "mail", "adresse", 123, "dateNaissance");
+	void lireEtudiantTest() {
+		Etudiant etu = new Etudiant(7, "a", "a", "a", "a", 123, "a");
 		// 1. Imposer un comportement à notre mock (dao)
 
 		when(ietudiantdao.getOne(7)).thenReturn(etu); // class Mockito importé en static
 		// 2. Utiliser le service
 		Etudiant found = etudiantService.getById(7);
 		
-		assertEquals("prenom", found.getPrenom());
+		assertEquals("a", found.getPrenom());
 
 	}
 
 	@Test
 	void getAllEtudiantTest() {
-		List<Etudiant> list = new ArrayList<Etudiant>();
-		Etudiant etu1 = new Etudiant(7, "nom", "prenom", "mail", "adresse", 123, "dateNaissance");
+		List<Etudiant> list = new ArrayList<>();
+		Etudiant etu1 = new Etudiant(7, "nom1", "prenom1", "mail1", "adresse1", 123, "dateNaissance1");
 		Etudiant etu2 = new Etudiant(2, "nom2", "prenom2", "mail2", "adresse2", 123, "dateNaissance2");
 		Etudiant etu3 = new Etudiant(3, "nom3", "prenom3", "mail3", "adresse3", 123, "dateNaissance3");
 

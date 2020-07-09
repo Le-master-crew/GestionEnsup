@@ -17,12 +17,12 @@ import javax.persistence.Id;
 @Entity
 public class Note {
     
-        @Id
+    @Id
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private int id;
 	private int idEtu;
 	private int idEns;
-	private double note;
+	private double valeur;
 
     public Note() {
         super();
@@ -33,7 +33,7 @@ public class Note {
         this.id = id;
         this.idEtu = idEtu;
         this.idEns = idEns;
-        this.note = note;
+        this.valeur = note;
     }
         
         
@@ -66,11 +66,11 @@ public class Note {
 
 
     public double getNote() {
-        return note;
+        return valeur;
     }
 
     public void setNote(double note) {
-        this.note = note;
+        this.valeur = note;
     }
         
         

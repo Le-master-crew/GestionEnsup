@@ -53,7 +53,7 @@ class DirectionServiceTest {
 		etuExpected1.setNom("");
 		etuExpected1.setPrenom("");
 		etuExpected1.setTelephone(1);
-		List<Etudiant> etudiants = new ArrayList<Etudiant>();
+		List<Etudiant> etudiants = new ArrayList<>();
 		etudiants.add(etuExpected1);
 
 		Note note1 = new Note();
@@ -90,7 +90,7 @@ class DirectionServiceTest {
 	}
 
 	@Test
-	void CalculerMoyenneEtudiantReturn10() {
+	void calculerMoyenneEtudiantReturn10() {
 		// la moyenne d'un étudiant dont l'id est 1 et dont les notes sont 0 et 20
 		// est égale à la moyenne d'un nouveletudiant dont la moyenne est 10
 		Etudiant etu = new Etudiant(1, "1", "1", "1", "1", 1, "1");
@@ -99,7 +99,7 @@ class DirectionServiceTest {
 		note.setNote(0.0);
 		Note note2 = new Note();
 		note.setNote(20.00);
-		List<Note> notes = new ArrayList<Note>();
+		List<Note> notes = new ArrayList<>();
 		notes.add(note);
 		notes.add(note2);
 
