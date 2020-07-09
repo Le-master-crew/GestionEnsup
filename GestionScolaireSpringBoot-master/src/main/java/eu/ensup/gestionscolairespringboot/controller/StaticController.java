@@ -340,7 +340,6 @@ public class StaticController {
 	 * question. Si l'étudiant existe, la vue messageSuppression.jsp est affichée.
 	 * 
 	 * @param idEtudiant
-	 * @param etudiant
 	 * @param modelMap
 	 * @return
 	 */
@@ -350,7 +349,7 @@ public class StaticController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PostMapping("/deleteEtudiant") // it only support port method
-	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, Etudiant etudiant, ModelMap modelMap) {
+	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, ModelMap modelMap) {
 		
 		ietudiantservice.deleteStudent(ietudiantservice.getById(idEtudiant));
 		return "messageSuppression"; // welcome is view name. It will call welcome.jsp
