@@ -1,6 +1,8 @@
 package eu.ensup.gestionscolairespringboot.servicetest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -111,6 +113,16 @@ class DirectionServiceTest {
 
 		assertEquals(etuVOExtpected.getMoyenne(), etuVOActual.getMoyenne());
 
+	}
+	
+	@Test
+	void testGraphiquenotnull() {
+		List<EtudiantMoyenneVO> liste = new ArrayList<>();
+		EtudiantMoyenneVO etumoy1 = new EtudiantMoyenneVO();
+		etumoy1.setNom("eric");
+		etumoy1.setMoyenne(10.00);
+		liste.add(etumoy1);
+		assertTrue(directionService.construcGraph(liste).contains("eric"));
 	}
 
 }
