@@ -387,8 +387,9 @@ public class StaticController {
 	@PostMapping("/noterEtudiant") // it only support port method
 	public String noterEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("idEnseignant") int idEnseignant, 
 			@RequestParam("note") int note,
-			Note noteEtudiant,ModelMap modelMap) {
+			ModelMap modelMap) {
 		double note2 = (double) note;
+		Note noteEtudiant = new Note();
 		noteEtudiant.setNote(note);
 		noteEtudiant.setIdEtu(idEtudiant);
 		noteEtudiant.setIdEns(idEnseignant);
