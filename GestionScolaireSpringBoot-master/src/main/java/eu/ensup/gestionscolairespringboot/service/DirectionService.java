@@ -26,9 +26,6 @@ public class DirectionService implements IDirectionService {
 	private NoteRepository noteDAO;
 
 	@Autowired
-	private EtudiantService etudiantService;
-
-	@Autowired
 	private EtudiantRepository daoetu;
 
 	@Override
@@ -48,10 +45,7 @@ public class DirectionService implements IDirectionService {
 			for (int i = 0; i < listeNoteEtudiant.size(); i++) {
 				if (listeNoteEtudiant.get(i).getIdEtu() != listeEtudiant.get(y).getId()) {
 					listeNoteEtudiant.remove(i);
-				
-					
 				}
-				
 			}
 			EtudiantMoyenneVO etudiantMoyenneVO = this.calculerMoyenneEtudiants(listeNoteEtudiant,
 					listeEtudiant.get(y).getId());
@@ -68,13 +62,17 @@ public class DirectionService implements IDirectionService {
 	@Override
 	public EtudiantMoyenneVO calculerMoyenneEtudiants(List<Note> liste, int idEtu) {
 
-		double countNotes = 0;
+		double countNotes = 0.0;
 		int index = 0;
+		double moyenne = 0.0;
 		for (int i = 0; i < liste.size(); i++) {
 			index++;
 			countNotes = countNotes + liste.get(i).getNote();
 		}
-		double moyenne = countNotes / index;
+		if(index!=0) {
+			moyenne = countNotes / index;
+		}
+		
 		EtudiantMoyenneVO etuVO = new EtudiantMoyenneVO();
 		Etudiant etu = daoetu.getOne(idEtu);
 		etuVO.setAdresse(etu.getAdresse());
