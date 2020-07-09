@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 /**
  * @author benja
  * Classe personne
- * Classe m�re des classes Enseignant, Etudiant et Direction
+ * Classe m�re des classes Enseignant, Etudiant
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

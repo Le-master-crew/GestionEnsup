@@ -5,12 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import eu.ensup.gestionscolairespringboot.dao.CoursRepository;
-import eu.ensup.gestionscolairespringboot.dao.DirectionRepository;
 import eu.ensup.gestionscolairespringboot.dao.EtudiantRepository;
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
-import eu.ensup.gestionscolairespringboot.domaine.Direction;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
-
 
 public class EtudiantService implements IEtudiantService {
 
@@ -19,8 +16,6 @@ public class EtudiantService implements IEtudiantService {
 	private EtudiantRepository etudiantDAO;
 	@Autowired
 	private CoursRepository coursDAO;
-	@Autowired
-	private DirectionRepository directionDAO;
 
 	// Constructeur par défault
 	public EtudiantService() {
@@ -51,15 +46,9 @@ public class EtudiantService implements IEtudiantService {
 	public Etudiant lierCoursEtudiant(Cours cours, Etudiant etudiant) {
 		if (etudiantDAO.existsById(etudiant.getId()) && coursDAO.existsById(cours.getIdCours())) {
 			return etudiantDAO.saveAndFlush(etudiant);
-		} else return null;
+		} else
+			return null;
 
-	}
-
-	@Override
-	public Direction login(String login, String password) {
-		Direction direction = new Direction();
-		direction = directionDAO.findByLoginAndPassword(login, password);
-		return direction;
 	}
 
 	@Override

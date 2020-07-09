@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import eu.ensup.gestionscolairespringboot.domaine.Cours;
-import eu.ensup.gestionscolairespringboot.domaine.Direction;
 import eu.ensup.gestionscolairespringboot.domaine.Etudiant;
 import eu.ensup.gestionscolairespringboot.domaine.Note;
 import eu.ensup.gestionscolairespringboot.domaine.projection.EtudiantMoyenneVO;
