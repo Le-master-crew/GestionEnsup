@@ -10,6 +10,8 @@ Plusieurs fonctionnalités sont disponibles :
 - modifier un étudiant
 - lire les informations d'un étudiant
 - associer un étudiant à un cours
+- ajouter une note a un étudiant
+- afficher le graphique de la moyenne des notes
 
 Prérequis :
 - Installation du serveur de base de données sur la machine (XAMPP ou WAMPP)
@@ -19,16 +21,21 @@ Prérequis :
 Lancement de l'application :
 - Télécharger le projet
 - A partir de la racine du projet executer la commande : mvn spring-boot:run
-- A partir d'un navigateur, accéder à : http://localhost:8080/ . Voici l'écran de connexion où vous pouvez vous connecter avec le compte admin
+- A partir d'un navigateur, accéder à : http://localhost:8080/gestion . Voici l'écran de connexion où vous pouvez vous connecter avec le compte admin
 
-  - identifiant : root
-  - mot de passe : root
+  - Accés directeur :
+    - identifiant : admin
+    - mot de passe : admin
+    
+  - Accés enseignant :
+    - identifiant : prof
+    - mot de passe : prof
 
 Swagger :
-Lorsque l'application est lancée aller sur : http://localhost:8080/swagger-ui.html#/
+Lorsque l'application est lancée aller sur : http://localhost:8080/gestion/swagger-ui.html#/
 
 Pour accéder à l'application en ligne déployée sur Heroku, aller sur : 
-https://gestionscolaire.herokuapp.com
+http://gestionecolev2.herokuapp.com/gestion/
 
 Technologies utilisées :
 
