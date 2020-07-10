@@ -18,11 +18,13 @@ INSERT INTO `cours` (`id_cours`, `libelle`, `nb_heure`) VALUES (1, 'Cours de JAV
 INSERT INTO `cours` (`id_cours`, `libelle`, `nb_heure`) VALUES (2, 'Cours de SPRING', 2);
 INSERT INTO `cours` (`id_cours`, `libelle`, `nb_heure`) VALUES (3, 'Cours de ANGULAR', 1);
 
-INSERT INTO `personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES (1, "241 rue DUGUESCLIN,
-69003 Lyon","contact@objis.com", "objis", "objis", 012030405);
+
+INSERT INTO `personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES (1, '241 rue DUGUESCLIN,
+69003 Lyon','contact@objis.com', 'objis', 'objis', 012030405);
 
 
 INSERT INTO `etudiant` (`date_naissance`, `id`) VALUES ("01/01/01", 1);
+
 INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('1', '1', '1', '13');
 INSERT INTO `gestionscolaire`.`note` (`id`, `id_ens`, `id_etu`, `valeur`) VALUES ('2', '1', '1', '14');
 INSERT INTO `gestionscolaire`.`personne` (`id`, `adresse`, `mail`, `nom`, `prenom`, `telephone`) VALUES ('2', NULL, NULL, NULL, NULL, '989744397');
