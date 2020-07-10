@@ -25,7 +25,7 @@ Lancement de l'application :
     - identifiant : admin
     - mot de passe : admin
     
-   - Accés enseignant :
+  - Accés enseignant :
     - identifiant : prof
     - mot de passe : prof
 
