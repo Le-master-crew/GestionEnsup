@@ -10,6 +10,8 @@ Plusieurs fonctionnalités sont disponibles :
 - modifier un étudiant
 - lire les informations d'un étudiant
 - associer un étudiant à un cours
+- ajouter une note a un étudiant
+- afficher le graphique de la moyenne des notes
 
 Prérequis :
 - Installation du serveur de base de données sur la machine (XAMPP ou WAMPP)
