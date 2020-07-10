@@ -40,3 +40,8 @@ Technologies utilisées :
 - Heroku
 - Jenkins
 - Swagger
+
+
+Voici le lien du DockerHub sur lequel vous pouvez trouver l'image de l'application :
+
+https://hub.docker.com/r/stolcraft/gestionensup2
