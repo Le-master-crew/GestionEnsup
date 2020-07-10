@@ -23,7 +23,7 @@
 		<sonar.sources>src/main/java,src/test/java</sonar.sources>
 		<sonar.tests></sonar.tests>
 		<sonar.coverage.inclusions>**/service/*</sonar.coverage.inclusions>
-		<sonar.coverage.exclusions>**/config/*,**/controller/*,**/*test/*,**/domaine/*</sonar.coverage.exclusions>
+		<sonar.coverage.exclusions>**/config/*,**/controller/*,**/*test/*,**/domaine/*,**/GestionscolairespringbootApplication.java</sonar.coverage.exclusions>
 	</properties>
 
 	<dependencies>
