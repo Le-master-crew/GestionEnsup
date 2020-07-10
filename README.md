@@ -21,8 +21,13 @@ Lancement de l'application :
 - A partir de la racine du projet executer la commande : mvn spring-boot:run
 - A partir d'un navigateur, accéder à : http://localhost:8080/ . Voici l'écran de connexion où vous pouvez vous connecter avec le compte admin
 
-  - identifiant : root
-  - mot de passe : root
+  - Accés durecteur :
+    - identifiant : admin
+    - mot de passe : admin
+    
+   - Accés enseignant :
+    - identifiant : prof
+    - mot de passe : prof
 
 Swagger :
 Lorsque l'application est lancée aller sur : http://localhost:8080/swagger-ui.html#/
