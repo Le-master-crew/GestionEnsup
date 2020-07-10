@@ -47,6 +47,7 @@ Technologies utilisées :
 - Heroku
 - Jenkins
 - Swagger
+- Spring Security
 
 
 Voici le lien du DockerHub sur lequel vous pouvez trouver l'image de l'application :
